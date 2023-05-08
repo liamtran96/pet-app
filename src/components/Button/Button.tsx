@@ -24,13 +24,11 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-/**
- * Primary UI component for user interaction
- */
+// eslint-disable-next-line no-unused-vars
 export const Button = ({ primary = false, size = "medium", backgroundColor, label, ...props }: ButtonProps) => {
   const mode = primary ? "primary" : "storybook-button--secondary";
   return (
-    <button type="button" className={clsx(`${mode}, `)} {...props}>
+    <button type="button" className={clsx(`${mode} ${backgroundColor} `)} {...props}>
       {label}
     </button>
   );
