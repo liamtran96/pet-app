@@ -1,0 +1,51 @@
+{
+	"Print to console": {
+		"scope": "javascript,typescript",
+		"prefix": "log",
+		"body": [
+			"console.log('$1',${2:element});",
+		],
+		"description": "Log output to console"
+	},
+  "export defaut function": {
+  "prefix": "dff",
+  "body": [
+    "",
+    "export const metadata = {",
+    "  title: '',",
+    "  description:",
+    "    \"\",",
+    "};",
+    "",
+    "export default function ${2:index}() {",
+    "  return (",
+    "    <div>${2:index}</div>",
+    "  );",
+    "}",
+    "",
+    ""
+  ],
+  "description": "export defaut function"
+},
+  "typescript func": {
+  "prefix": "fc",
+  "body": [
+    "import { FC } from 'react';",
+    "",
+    "interface I${1:}Props {}",
+    "",
+    "export const ${1:}: FC<I${1:}Props> = () => {",
+    "",
+    "  return (",
+    "    <div>${1:}</div> ",
+    "  );",
+    "};",
+    ""
+  ],
+  "description": ""
+},
+
+}
+
+
+	
