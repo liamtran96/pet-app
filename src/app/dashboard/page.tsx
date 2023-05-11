@@ -1,8 +1,8 @@
-import Button from '@/components/Button';
+import Button from '@/components/Button/Button';
 
 
 export default function Dashboard() {
   return (
-    <Button>Dashboard</Button>
+    <Button variant="ghost">Dashboard</Button>
   );
 }
