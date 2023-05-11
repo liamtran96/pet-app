@@ -1,6 +1,4 @@
-"use client";
-
-import { clsx } from "clsx";
+import { cn } from '../../lib/utils'
 import { cva, VariantProps } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
 import { ButtonHTMLAttributes, FC } from "react";
@@ -35,7 +33,7 @@ export interface ButtonProps
 const Button: FC<ButtonProps> = ({ className, children, variant, isLoading, size, ...props }) => {
   return (
     <button
-      className={clsx(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, className }))}
       disabled={isLoading}
       {...props}
     >

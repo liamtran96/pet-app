@@ -11,9 +11,11 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@next-auth/upstash-redis-adapter": "^3.0.4",
     "@types/node": "18.16.3",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.3",
+    "@upstash/redis": "^1.20.6",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "class-variance-authority": "^0.6.0",
@@ -28,20 +30,22 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
+    "tailwind-merge": "^1.12.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4",
     "yup": "^1.1.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.8",
-    "@storybook/addon-interactions": "^7.0.8",
-    "@storybook/addon-links": "^7.0.8",
-    "@storybook/blocks": "^7.0.8",
-    "@storybook/nextjs": "^7.0.8",
-    "@storybook/react": "^7.0.8",
-    "@storybook/testing-library": "^0.0.14-next.2",
+    "@storybook/addon-essentials": "^7.1.0-alpha.16",
+    "@storybook/addon-interactions": "^7.1.0-alpha.16",
+    "@storybook/addon-links": "^7.1.0-alpha.16",
+    "@storybook/blocks": "^7.1.0-alpha.16",
+    "@storybook/nextjs": "^7.1.0-alpha.16",
+    "@storybook/react": "^7.1.0-alpha.16",
+    "@storybook/testing-library": "^0.1.1-future.2",
     "eslint-plugin-storybook": "^0.6.12",
-    "storybook": "^7.0.8"
+    "next-auth": "^4.22.1",
+    "storybook": "^7.1.0-alpha.16"
   },
   "prettier": {
     "arrowParens": "always",

@@ -1,8 +1,9 @@
+import Button from '@/components/Button/Button';
 
-export default function Home() {
+export default async function Home() {
   return (
-    <main className="">
-      <div>Button</div>
+    <main>
+      <Button variant="ghost">Button</Button>
     </main>
   );
 }
