@@ -1,21 +1,19 @@
-import { useSnackbar } from "notistack";
+import { useSnackbar, VariantType } from "notistack";
 import { useCallback } from "react";
 
 export const useNotify = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   const notify = useCallback(
-    (variant) =>
-      (message, options = {}) =>
+    (variant: VariantType) =>
+      (message: string, options = {}) =>
         enqueueSnackbar(message, { autoHideDuration: 2500, ...options, variant }),
     [enqueueSnackbar]
   );
 
   const successNotify = notify("success");
-
   const errorNotify = notify("error");
-
   const warningNotify = notify("warning");
-
   const infoNotify = notify("info");
 
   const closeNotify = useCallback(() => {

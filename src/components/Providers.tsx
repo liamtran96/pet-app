@@ -1,6 +1,7 @@
 "use client";
 
 import { SnackbarProvider } from "notistack";
+import { FC, ReactNode } from "react";
 
 interface ProvidersProps {
   children: ReactNode;
