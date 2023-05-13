@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "postinstall": "husky install"
   },
   "resolutions": {
     "@types/react": "18.0.8",
@@ -27,8 +28,9 @@
     "axios": "^1.4.0",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
-    "eslint": "8.39.0",
-    "eslint-config-next": "13.4.0",
+    "eslint": "^8.40.0",
+    "eslint-config-next": "^13.4.2",
+    "lint-staged": "^13.2.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.216.0",
     "next": "13.4.0",
@@ -45,6 +47,16 @@
     "yup": "^1.1.1",
     "zod": "^3.21.4"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.[ts,tsx]": [
+      "yarn lint"
+    ]
+  },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.1.0-alpha.16",
     "@storybook/addon-interactions": "^7.1.0-alpha.16",
@@ -54,6 +66,7 @@
     "@storybook/react": "^7.1.0-alpha.16",
     "@storybook/testing-library": "^0.1.1-future.2",
     "eslint-plugin-storybook": "^0.6.12",
+    "husky": "^8.0.3",
     "next-auth": "^4.22.1",
     "storybook": "^7.1.0-alpha.16"
   },
