@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "postinstall": "husky install"
   },
   "resolutions": {
     "@types/react": "18.0.8",
@@ -54,6 +55,7 @@
     "@storybook/react": "^7.1.0-alpha.16",
     "@storybook/testing-library": "^0.1.1-future.2",
     "eslint-plugin-storybook": "^0.6.12",
+    "husky": "^8.0.3",
     "next-auth": "^4.22.1",
     "storybook": "^7.1.0-alpha.16"
   },
