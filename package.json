@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "pre-commit": "lint-staged"
   },
   "resolutions": {
     "@types/react": "18.0.8",
