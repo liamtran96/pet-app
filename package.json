@@ -52,6 +52,11 @@
 			"pre-commit": "lint-staged"
 		}
 	},
+  "lint-staged": {
+		"src/**/*.ts": [
+			"yarn lint"
+		]
+	},
   "devDependencies": {
     "@storybook/addon-essentials": "^7.1.0-alpha.16",
     "@storybook/addon-interactions": "^7.1.0-alpha.16",
