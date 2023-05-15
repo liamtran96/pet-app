@@ -4,7 +4,11 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:storybook/recommended"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "plugin:storybook/recommended"
+  ],
   "parser": "@babel/eslint-parser",
   "overrides": [
     {
