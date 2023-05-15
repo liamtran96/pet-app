@@ -8,9 +8,6 @@ import { notFound } from "next/navigation";
 import { FC, ReactNode } from "react";
 import { FriendRequestSidebarOptions } from "@/components/FriendRequestSidebarOptions";
 import { fetchRedis } from "@/helpers/redis";
-// import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
-// import SidebarChatList from "@/components/SidebarChatList";
-// import MobileChatLayout from "@/components/MobileChatLayout";
 import { SidebarOption } from "@/types/typings";
 
 interface LayoutProps {
