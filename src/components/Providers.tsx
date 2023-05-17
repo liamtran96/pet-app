@@ -7,6 +7,8 @@ interface ProvidersProps {
   children: ReactNode;
 }
 
-export const Providers: FC<ProvidersProps> = ({ children }) => {
+const Providers: FC<ProvidersProps> = ({ children }) => {
   return <SnackbarProvider maxSnack={3}>{children}</SnackbarProvider>;
 };
+
+export default Providers;

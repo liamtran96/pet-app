@@ -3,7 +3,6 @@ import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
-import { FC } from "react";
 export const metadata = {
   title: "FriendZone | Requests",
   description: "Requests page",
@@ -42,4 +41,4 @@ export default async function Requests() {
       </div>
     </main>
   );
-};
+}
