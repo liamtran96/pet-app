@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import Link from "next/link";
 import { User } from "lucide-react";
 
