@@ -9,7 +9,7 @@ export const metadata = {
   description: "Requests page",
 };
 
-const page: FC = async () => {
+export default async function Requests() {
   const session = await getServerSession(authOptions);
   if (!session) notFound();
 
@@ -43,5 +43,3 @@ const page: FC = async () => {
     </main>
   );
 };
-
-export default page;
