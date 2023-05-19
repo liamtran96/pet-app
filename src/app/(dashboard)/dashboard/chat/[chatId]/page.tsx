@@ -1,11 +1,11 @@
-// import ChatInput from "@/components/ChatInput";
-// import Messages from "@/components/Messages";
+import ChatInput from "@/components/ChatInput";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { messageArrayValidator } from "@/lib/validations/message";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Messages from "@/components/Messages";
 
 // The following generateMetadata functiion was written after the video and is purely optional
 export async function generateMetadata({ params }: { params: { chatId: string } }) {
@@ -49,13 +49,12 @@ const page = async ({ params }: PageProps) => {
   if (!session) notFound();
 
   const { user } = session;
-  console.log("user", user);
 
   const [userId1, userId2] = chatId.split("--");
 
-  // if (user.id !== userId1 && user.id !== userId2) {
-  //   notFound();
-  // }
+  if (user.id !== userId1 && user.id !== userId2) {
+    notFound();
+  }
 
   const chatPartnerId = user.id === userId1 ? userId2 : userId1;
   // new
@@ -89,15 +88,14 @@ const page = async ({ params }: PageProps) => {
           </div>
         </div>
       </div>
-
-      {/* <Messages
+      <Messages
         chatId={chatId}
         chatPartner={chatPartner}
         sessionImg={session.user.image}
         sessionId={session.user.id}
         initialMessages={initialMessages}
       />
-      <ChatInput chatId={chatId} chatPartner={chatPartner} /> */}
+      <ChatInput chatId={chatId} chatPartner={chatPartner} />
     </div>
   );
 };
