@@ -1,11 +1,10 @@
 "use client";
 
-// import { pusherClient } from "@/lib/pusher";
+import { pusherClient } from "@/lib/pusher";
 import { chatHrefConstructor } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
-// import { toast } from "react-hot-toast";
-// import UnseenChatToast from "./UnseenChatToast";
+import { toPusherKey } from "@/lib/utils";
 
 interface SidebarChatListProps {
   friends: User[];
@@ -23,46 +22,33 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
   const [unseenMessages, setUnseenMessages] = useState<Message[]>([]);
   const [activeChats, setActiveChats] = useState<User[]>(friends);
 
-  // useEffect(() => {
-  //   pusherClient.subscribe(toPusherKey(`user:${sessionId}:chats`));
-  //   pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
+  useEffect(() => {
+    pusherClient.subscribe(toPusherKey(`user:${sessionId}:chats`));
+    pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
 
-  //   const newFriendHandler = (newFriend: User) => {
-  //     setActiveChats((prev) => [...prev, newFriend]);
-  //   };
+    const newFriendHandler = (newFriend: User) => {
+      setActiveChats((prev) => [...prev, newFriend]);
+    };
 
-  //   const chatHandler = (message: ExtendedMessage) => {
-  //     const shouldNotify =
-  //       pathname !== `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`;
+    const chatHandler = (message: ExtendedMessage) => {
+      const shouldNotify =
+        pathname !== `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`;
 
-  //     if (!shouldNotify) return;
+      if (!shouldNotify) return;
+      setUnseenMessages((prev) => [...prev, message]);
+    };
 
-  //     // should be notified
-  //     // toast.custom((t) => (
-  //     //   <UnseenChatToast
-  //     //     t={t}
-  //     //     sessionId={sessionId}
-  //     //     senderId={message.senderId}
-  //     //     senderImg={message.senderImg}
-  //     //     senderMessage={message.text}
-  //     //     senderName={message.senderName}
-  //     //   />
-  //     // ));
+    pusherClient.bind("new_message", chatHandler);
+    pusherClient.bind("new_friend", newFriendHandler);
 
-  //     setUnseenMessages((prev) => [...prev, message]);
-  //   };
+    return () => {
+      pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
+      pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
 
-  //   pusherClient.bind("new_message", chatHandler);
-  //   pusherClient.bind("new_friend", newFriendHandler);
-
-  //   return () => {
-  //     pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
-  //     pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
-
-  //     pusherClient.unbind("new_message", chatHandler);
-  //     pusherClient.unbind("new_friend", newFriendHandler);
-  //   };
-  // }, [pathname, sessionId, router]);
+      pusherClient.unbind("new_message", chatHandler);
+      pusherClient.unbind("new_friend", newFriendHandler);
+    };
+  }, [pathname, sessionId, router]);
 
   useEffect(() => {
     if (pathname?.includes("chat")) {
